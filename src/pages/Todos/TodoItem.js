@@ -63,8 +63,12 @@ const TodoButton = styled(DefaultButton)`
   border-radius: 5px;
   border: none;
   font-size: 0.9rem;
-  background-color: ${(props) => theme.color.primary300};
+  /* background-color: ${(props) => theme.color.primary300};
+  color: #fff; */
   color: #fff;
+  background-color: ${(props) =>
+    props.children === "미완료" ? "#858585" : theme.color.primary300};
+  /* color: ${(props) => (props.children === "미완료" ? "black" : "#fff")}; */
   transition: 0.2s;
   &:hover {
     background-color: ${(props) => theme.color.primary100};
@@ -117,14 +121,14 @@ export default function TodoItem({
                 updateTodoDone(todo.id, todo.isCompleted, todo.todo)
               }
             >
-              {todo.isCompleted ? "미완료" : "완료"}
+              {todo.isCompleted ? "완료" : "미완료"}
             </TodoButton>
             {todo.isCompleted ? (
-              <TodoText>{todo.todo}</TodoText>
-            ) : (
               <TodoText>
                 <s>{todo.todo}</s>
               </TodoText>
+            ) : (
+              <TodoText>{todo.todo}</TodoText>
             )}
 
             <TodoButton onClick={(e) => handleEdit(e, todo.todo)}>
