@@ -14,7 +14,7 @@ function App() {
     } else {
       navigate("/");
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <ThemeProvider theme={theme}>

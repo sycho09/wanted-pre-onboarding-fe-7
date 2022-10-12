@@ -2,11 +2,9 @@ import React, { useEffect } from "react";
 import useUpdateTodo from "./hooks/useUpdateTodo";
 import useDeleteTodo from "./hooks/useDeleteTodo";
 import useHandleEdit from "./hooks/useHandleEdit";
-import useGetTodos from "./hooks/useGetTodos";
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ todo }) {
-  const { getTodoList } = useGetTodos();
+export default function TodoList({ todo, getTodoList }) {
   const { updateTodo, editSuccess, updateSuccess } = useUpdateTodo();
   const { deleteTodoItem, deleteSuccess } = useDeleteTodo();
   const { editMode, setEditMode, editText, setEditText, handleEdit } =
@@ -25,8 +23,7 @@ export default function TodoList({ todo }) {
   };
 
   // submit changes of todo
-  const updateTodoChange = (e, id, isCompleted) => {
-    e.preventDefault();
+  const updateTodoChange = (id, isCompleted) => {
     updateTodo(
       id,
       {
