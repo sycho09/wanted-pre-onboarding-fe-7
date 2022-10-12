@@ -117,7 +117,7 @@ export default function TodoItem({
                 updateTodoDone(todo.id, todo.isCompleted, todo.todo)
               }
             >
-              {todo.isCompleted ? "완료" : "미완료"}
+              {todo.isCompleted ? "미완료" : "완료"}
             </TodoButton>
             {todo.isCompleted ? (
               <TodoText>{todo.todo}</TodoText>
